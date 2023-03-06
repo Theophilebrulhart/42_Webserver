@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:41:59 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/02 16:45:04 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:51:40 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <sys/socket.h>
 # include "../Socket/HeadersSocket.hpp"
 # include <fstream>
+# include <map>
+# define MAP_STRING std::map<std::string, std::string>
 
 namespace   SERVER
 {
@@ -30,9 +32,7 @@ namespace   SERVER
             SOCKET::ListenSocket    *getServerSocket(void) const;
 			void					setHtmlFile(std::string htmlFile);
 			std::string				getHtmlFile(void);
-
-								
-
+			
         private:
 
             SOCKET::ListenSocket    *_serverSocket;
@@ -41,9 +41,7 @@ namespace   SERVER
             virtual void    _responder(void) = 0;
 			virtual	void	_loadHtmlFile(void);
 			std::string		_htmlFile;
-
     };
 }
-
 
 #endif

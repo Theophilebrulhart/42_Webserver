@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 11:29:26 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/02 17:17:37 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/06 11:00:54 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int port, u_long interface)
 
 SOCKET::ASocket::~ASocket(void)
 {
-    std::cout << "ASocket Destructor called\n";
     return ;
 }
 
@@ -35,8 +34,7 @@ void    SOCKET::ASocket::testReturn(int value) const
 {
     if (value < 0)
     {
-        //std::cerr << "Return function failed : " << std::endl;
-        perror("Failed to connect : ");
+        std::cerr << "Return function failed : " << std::endl;
         close(_socketFd);
         exit(EXIT_FAILURE);
     }

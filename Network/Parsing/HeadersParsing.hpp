@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HeadersParsing.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 13:10:19 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 15:59:27 by tbrulhar         ###   ########.fr       */
+/*   Created: 2023/03/06 13:05:05 by tbrulhar          #+#    #+#             */
+/*   Updated: 2023/03/06 15:57:01 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AllHeaders.hpp"
+#ifndef HEADERSPARSING_HPP
+# define HEADERSPARSING_HPP
 
-int main(void)
-{
-    SERVER::TestServer t;
-    return (0);
-}
+# include "RequestInfo/HeadersRequestInfo.hpp"
+
+#endif

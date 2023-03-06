@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:54:43 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/02 16:44:33 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:45:50 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <iostream> 
 # include "AServer.hpp"
 # include <unistd.h>
+# include "../Parsing/HeadersParsing.hpp"
 
 namespace   SERVER
 {
@@ -34,6 +35,7 @@ namespace   SERVER
             void    _accepter(void);
             void    _handler(void) const;
             void    _responder(void);
+			MAP_STRING		_requestInfo;
     };
 }
 

@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:57:16 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/02 17:18:57 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:56:01 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void    SERVER::TestServer::_accepter(void)
 		exit (EXIT_FAILURE);
 	}
     read(_newSocket, _buffer, 3000);
+	requestParsing(_buffer, _requestInfo);
 	return ;
 }
 
