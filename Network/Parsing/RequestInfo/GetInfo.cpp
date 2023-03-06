@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetInfo.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:34:27 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 15:54:32 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:17:40 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void	getInfo(std::string &buffer, MAP_STRING &info)
     getPath(buffer, info, "HTTP/", "PROTOCOL");
 	getSection(buffer, info, "Host:", "HOST");
 	getSection(buffer, info, "Connection:", "CONNECTION");
+	getSection(buffer, info, "Referer:", "REFERER");
 }
