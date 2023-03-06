@@ -6,11 +6,11 @@
 #    By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/02 13:06:30 by tbrulhar          #+#    #+#              #
-#    Updated: 2023/03/06 15:56:34 by tbrulhar         ###   ########.fr        #
+#    Updated: 2023/03/06 16:04:27 by tbrulhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	src/main.cpp
+SRC =	Source/main.cpp
 SRC +=	${addprefix Network/Socket/, ASocket.cpp BindSocket.cpp ConnectSocket.cpp \
 ListenSocket.cpp}
 SRC +=	${addprefix Network/Server/, AServer.cpp TestServer.cpp}
