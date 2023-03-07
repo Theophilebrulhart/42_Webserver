@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:34:27 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 14:18:32 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 20:57:06 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	getPath(std::string &buffer, MAP_STRING &info, std::string toFind, std::str
 {
 	std::string	path;
 	
-	for (int i = buffer.find(toFind.c_str(), 0, toFind.size()); buffer[i] != ' ' && buffer[i] != '\n'; i++)
+	for (int i = buffer.find(toFind.c_str(), 0, toFind.size()); buffer[i] != ' ' && buffer[i] != '\n' && buffer[i] != '\r'; i++)
 	{
 		path += buffer[i];
 	}

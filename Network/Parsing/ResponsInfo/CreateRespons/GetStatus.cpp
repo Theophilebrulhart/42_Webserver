@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:04:53 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 17:27:13 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 21:30:08 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ RESPONS::GetStatus::GetStatus(MAP_STRING &info, std::string html) : _info(info),
 {
 	setStatus(info.at("PROTOCOL"));
 	if (!_html.empty())
-		setStatus("\r200\rOK");
+		setStatus(" 200 OK");
 	else
-		setStatus("\r404 Not\rFound");
+		setStatus(" 404 Not Found");
     return ;
 }
 
@@ -34,20 +34,9 @@ std::string	RESPONS::GetStatus::getStatus(void) const
 
 void	RESPONS::GetStatus::setStatus(std::string const &value)
 {
-
-		if (_status.empty())
-		{
-			std::cout << "\"" << _status << "\" operator = \"" << value << "\""  << std::endl;
-			_status = value;
-		}
-		
+	if (_status.empty())
+		_status = value;
 	else
-		{
-			std::cout << "\"" << _status << "\" operator += \"" << value << "\""  << std::endl;
-			std::cout << "= status " << _status << std::endl;
-			_status += value;
-
-		}
-	std::cout << "= status " << _status << std::endl;
+		_status += value;
 	return ;
 }

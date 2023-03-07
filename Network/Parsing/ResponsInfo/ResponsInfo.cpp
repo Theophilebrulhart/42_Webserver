@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:37:34 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 16:58:31 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 22:15:35 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 RESPONS::ResponsInfo::ResponsInfo(MAP_STRING &info) : _info(info)
 {
-	RESPONS::GetHtml	htmlFile(_info);
-	
-	RESPONS::GetStatus	status(_info, htmlFile.getHtml());
-	setRespons(status.getStatus());
-	setRespons("\n");
-	setRespons(htmlFile.getHtml());
+	if (_info.at("PATH").find(".html") != std::string::npos)
+	{
+		getHtmlFile();
+		//setRespons(htmlFile.getContentLength());
+		setRespons(_status);
+		setRespons(_contentType);
+	}
+	setRespons("\r\n");
+	setRespons(_htmlFile);
     return ;
 }
 
@@ -30,16 +33,43 @@ RESPONS::ResponsInfo::~ResponsInfo(void)
 
 void	RESPONS::ResponsInfo::setRespons(std::string const value)
 {
-	//std::cout << "respons : " << _respons << std::endl;
 	if (_respons.empty())
 		_respons = value + '\n';
 	else
 		_respons += value + '\n';
-	//std::cout << "respons : " << _respons << std::endl << std::endl;
 	return ;
 }
 
 std::string RESPONS::ResponsInfo::getRespons(void) const
 {
 	return (_respons);
+}
+
+void		RESPONS::ResponsInfo::getHtmlFile(void)
+{
+	std::cout << "\ngetHtml from responsinfo\n";
+	RESPONS::GetHtml htmlFile(_info);
+	RESPONS::GetStatus	status(_info, htmlFile.getHtml());
+	setStatus(status.getStatus());
+	setContentType(htmlFile.getContentType());
+	setHtmlFile(htmlFile.getHtml());
+	return ;
+}
+
+void	RESPONS::ResponsInfo::setHtmlFile(std::string const &htmlFile)
+{
+	_htmlFile = htmlFile;
+	return ;
+}
+
+void	RESPONS::ResponsInfo::setStatus(std::string const &status)
+{
+	_status = status;
+	return ;
+}
+
+void	RESPONS::ResponsInfo::setContentType(std::string const &contentType)
+{
+	_contentType = contentType;
+	return ;
 }

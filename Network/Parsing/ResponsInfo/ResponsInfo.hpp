@@ -6,16 +6,13 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:32:57 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 16:18:05 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 22:00:25 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RESPONSINFO_HPP
 # define RESPONSINFO_HPP
-# include <map>
-# include <iostream>
 # include "HeadersResponsInfo.hpp"
-# define MAP_STRING std::map<std::string, std::string>
 
 
 class TestServer;
@@ -30,10 +27,18 @@ namespace RESPONS
 		
 			void		setRespons(std::string const value);
 			std::string	getRespons(void) const;
+			void		getHtmlFile(void);
+
+			void		setHtmlFile(std::string const &htmlFile);
+			void		setStatus(std::string const &status);
+			void		setContentType(std::string const &contentType);
 
 		private:
 
 			std::string	_respons;
+			std::string _htmlFile;
+			std::string	_status;
+			std::string	_contentType;
 			MAP_STRING	_info;
 	};
 }
