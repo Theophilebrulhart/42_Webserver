@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:54:43 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 15:45:50 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:42:50 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ namespace   SERVER
 
         private:
 
-            char    _buffer[3000];
-            int     _newSocket;
-            void    _accepter(void);
-            void    _handler(void) const;
-            void    _responder(void);
+            char			_buffer[3000];
+            int				_newSocket;
+            void			_accepter(void);
+            void  			_handler(void);
+            void    		_responder(void);
 			MAP_STRING		_requestInfo;
     };
 }

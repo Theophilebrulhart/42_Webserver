@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:57:16 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 15:56:01 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:12:14 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,38 @@ void    SERVER::TestServer::_accepter(void)
 		exit (EXIT_FAILURE);
 	}
     read(_newSocket, _buffer, 3000);
-	requestParsing(_buffer, _requestInfo);
 	return ;
 }
 
-void	SERVER::TestServer::_handler(void) const
+void	SERVER::TestServer::_handler(void)
 {
-	std::cout << "\n********* BUFFER ***********\n\n " << _buffer;
+	requestParsing(_buffer, _requestInfo);
 	return ;
 }
 
 void	SERVER::TestServer::_responder(void)
 {
-	std::string htmlFile = getHtmlFile();
-	send(_newSocket, htmlFile.c_str(), htmlFile.size(), 0);
+	std::string respons;
+	if (_requestInfo.at("PATH").find(".html") != std::string::npos)
+		respons = loadHtmlFile(_requestInfo.at("PATH"));
+	else
+		respons = getHtmlFile();
+	std::cout << "\n\e[0;93m*****RESPONDER****\n" << respons;
+	send(_newSocket, respons.c_str(), respons.size(), 0);
 	close(_newSocket);
 	return ;
 }
 
 void	SERVER::TestServer::launch(void)
 {
+	std::cout << "\e[0;31m****STARTING*****\e[0m\n";
 	while (1)
 	{
-		std::cout << "\n===== WAITING =====\n\n";
+		std::cout << "\n\e[0;32m===== WAITING =====\e[0m\n";
 		_accepter();
 		_handler();
 		_responder();
-		std::cout << "\n===== DONE =====\n\n";
+		std::cout << "\e[0;36m\n===== DONE =====\e[0m\n";
 	}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:41:59 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 15:51:40 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:13:39 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ namespace   SERVER
             virtual void    		launch(void) = 0;
             SOCKET::ListenSocket    *getServerSocket(void) const;
 			void					setHtmlFile(std::string htmlFile);
-			std::string				getHtmlFile(void);
-			
+			std::string				getHtmlFile(void) const;
+			std::string    	        loadHtmlFile(std::string htmlFile);
         private:
 
             SOCKET::ListenSocket    *_serverSocket;
             virtual void    _accepter(void) = 0;
-            virtual void    _handler(void) const = 0;
+            virtual void    _handler(void) = 0;
             virtual void    _responder(void) = 0;
-			virtual	void	_loadHtmlFile(void);
+			
 			std::string		_htmlFile;
     };
 }

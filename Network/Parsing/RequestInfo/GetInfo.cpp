@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GetInfo.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
+/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:34:27 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 23:17:40 by theophilebr      ###   ########.fr       */
+/*   Updated: 2023/03/07 14:18:32 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,20 @@ void    getMethod(std::string &buffer, MAP_STRING &info)
 void	getPath(std::string &buffer, MAP_STRING &info, std::string toFind, std::string name)
 {
 	std::string	path;
-
+	
 	for (int i = buffer.find(toFind.c_str(), 0, toFind.size()); buffer[i] != ' ' && buffer[i] != '\n'; i++)
 	{
 		path += buffer[i];
 	}
-	info.insert(std::pair<std::string, std::string>(name, path));
+	try 
+	{
+    	info.at(name) = path;
+  	}
+  	catch (const std::out_of_range& oor) 
+	{
+		info.insert(std::pair<std::string, std::string>(name, path));
+  	}
+	
 	return ;
 }
 
@@ -49,7 +57,14 @@ void	getSection(std::string &buffer, MAP_STRING &info, std::string toFind, std::
 		path += buffer[i];
 		i++;
 	}
-	info.insert(std::pair<std::string, std::string>(name, path));
+	try 
+	{
+    	info.at(name) = path;
+  	}
+  	catch (const std::out_of_range& oor) 
+	{
+		info.insert(std::pair<std::string, std::string>(name, path));
+  	}
 }
 
 void	getInfo(std::string &buffer, MAP_STRING &info)

@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:45:35 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 15:50:17 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:13:22 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ SERVER::AServer::AServer(int domain, int service, int protocol,
 int port, u_long interface, int backlog)
 {
     _serverSocket = new SOCKET::ListenSocket(domain, service, protocol, port, interface, backlog);
-	_loadHtmlFile();
+	_htmlFile = loadHtmlFile("HtmlFile1.html");
     return ;
 }
 
@@ -30,9 +30,10 @@ SOCKET::ListenSocket *SERVER::AServer::getServerSocket(void) const
 	return (_serverSocket);
 }
 
-void	SERVER::AServer::_loadHtmlFile(void)
-{
-	std::string	file = "Network/HtmlFiles/HtmlFile1.html";
+std::string	SERVER::AServer::loadHtmlFile(std::string htmlFile)
+{	
+	std::string file = "Network/HtmlFiles/" + htmlFile;
+	std::cout << file << std::endl;
 	std::string	tmp;
 	std::ifstream ifs (file.c_str(), std::ifstream::in);
 	if(ifs.fail())
@@ -46,18 +47,12 @@ void	SERVER::AServer::_loadHtmlFile(void)
 		tmp += c;
 		c = ifs.get(); 
 	}
-	setHtmlFile(tmp);
 	ifs.close();
-	return ;
+	std::cout << "\n****TMP****\n" << tmp << "\n";
+	return (tmp);
 }
 
-void	SERVER::AServer::setHtmlFile(std::string htmlFile)
-{
-	_htmlFile = htmlFile;
-	return ;
-}
-
-std::string	SERVER::AServer::getHtmlFile(void)
+std::string	SERVER::AServer::getHtmlFile(void) const
 {
 	return (_htmlFile);
 }
