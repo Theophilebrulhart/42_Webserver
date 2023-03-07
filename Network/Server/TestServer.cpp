@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:57:16 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 14:12:14 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:38:10 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,10 @@ void	SERVER::TestServer::_handler(void)
 
 void	SERVER::TestServer::_responder(void)
 {
-	std::string respons;
-	if (_requestInfo.at("PATH").find(".html") != std::string::npos)
-		respons = loadHtmlFile(_requestInfo.at("PATH"));
-	else
-		respons = getHtmlFile();
+	RESPONS::ResponsInfo	createRespons(_requestInfo);	
+	std::string respons = createRespons.getRespons();
 	std::cout << "\n\e[0;93m*****RESPONDER****\n" << respons;
+
 	send(_newSocket, respons.c_str(), respons.size(), 0);
 	close(_newSocket);
 	return ;

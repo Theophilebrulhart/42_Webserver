@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AServer.cpp                                        :+:      :+:    :+:   */
+/*   HeadersResponsInfo.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 13:45:35 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:42:33 by tbrulhar         ###   ########.fr       */
+/*   Created: 2023/03/07 14:42:27 by tbrulhar          #+#    #+#             */
+/*   Updated: 2023/03/07 16:23:29 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AServer.hpp"
+#ifndef HEADERSRESPONSINFO_HPP
+# define HEADERSRESPONSINFO_HPP
 
-SERVER::AServer::AServer(int domain, int service, int protocol,
-int port, u_long interface, int backlog)
-{
-    _serverSocket = new SOCKET::ListenSocket(domain, service, protocol, port, interface, backlog);
-    return ;
-}
+# include "ResponsInfo.hpp"
+# include "GetStatus.hpp"
+# include "GetHtml.hpp"
 
-SERVER::AServer::~AServer(void)
-{
-    return ;
-}
-
-SOCKET::ListenSocket *SERVER::AServer::getServerSocket(void) const
-{
-	return (_serverSocket);
-}
+#endif

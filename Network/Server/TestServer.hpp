@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:54:43 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 12:42:50 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:06:58 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,4 @@ namespace   SERVER
 			MAP_STRING		_requestInfo;
     };
 }
-
-
-
 #endif
