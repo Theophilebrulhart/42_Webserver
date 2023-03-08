@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:24:56 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 22:22:38 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:44:24 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ RESPONS::GetHtml::GetHtml(MAP_STRING &info) : _info(info)
 {
 	_html = loadHtmlFile(_info.at("PATH"));
 	//if (_info.at("PATH").find(".css") != std::string::npos)
-	_contentType = "Content-Type: text/html";
+	if ( _info.at("PATH").find(".html") != std::string::npos)
+		_contentType = "Content-Type: text/html\r\n";
+	else if ( _info.at("PATH").find(".css") != std::string::npos)
+		_contentType = "Content-Type: text/css\r\n";
 	std::string size = ft_itoa(_html.size());
-	_contentLength = "Content-Length : " + size;
+	_contentLength = "Content-Length : " + size + "\r\n";
     return ;
 }
 

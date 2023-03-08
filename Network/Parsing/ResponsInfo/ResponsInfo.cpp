@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:37:34 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 22:15:35 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:38:46 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 RESPONS::ResponsInfo::ResponsInfo(MAP_STRING &info) : _info(info)
 {
-	if (_info.at("PATH").find(".html") != std::string::npos)
+	if (_info.at("PATH").find(".html") != std::string::npos || _info.at("PATH").find(".css") != std::string::npos)
 	{
 		getHtmlFile();
-		//setRespons(htmlFile.getContentLength());
 		setRespons(_status);
 		setRespons(_contentType);
+		// std::cout << "contentLength : " << _contentLength << "\n";
+		//setRespons(_contentLength);
+		setRespons("\r\n");
 	}
-	setRespons("\r\n");
 	setRespons(_htmlFile);
     return ;
 }
@@ -34,9 +35,9 @@ RESPONS::ResponsInfo::~ResponsInfo(void)
 void	RESPONS::ResponsInfo::setRespons(std::string const value)
 {
 	if (_respons.empty())
-		_respons = value + '\n';
+		_respons = value;
 	else
-		_respons += value + '\n';
+		_respons += value;
 	return ;
 }
 
@@ -53,6 +54,7 @@ void		RESPONS::ResponsInfo::getHtmlFile(void)
 	setStatus(status.getStatus());
 	setContentType(htmlFile.getContentType());
 	setHtmlFile(htmlFile.getHtml());
+	setContentLength(htmlFile.getContentLength());
 	return ;
 }
 
@@ -71,5 +73,11 @@ void	RESPONS::ResponsInfo::setStatus(std::string const &status)
 void	RESPONS::ResponsInfo::setContentType(std::string const &contentType)
 {
 	_contentType = contentType;
+	return ;
+}
+
+void	RESPONS::ResponsInfo::setContentLength(std::string const &contentLength)
+{
+	_contentLength = contentLength;
 	return ;
 }

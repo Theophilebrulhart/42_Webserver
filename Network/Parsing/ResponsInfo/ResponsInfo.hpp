@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:32:57 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 22:00:25 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/08 12:33:40 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ namespace RESPONS
 			ResponsInfo(MAP_STRING &info);
 			virtual ~ResponsInfo(void);
 		
-			void		setRespons(std::string const value);
+			
 			std::string	getRespons(void) const;
 			void		getHtmlFile(void);
-
+			
+			void		setRespons(std::string const value);
 			void		setHtmlFile(std::string const &htmlFile);
 			void		setStatus(std::string const &status);
 			void		setContentType(std::string const &contentType);
+			void		setContentLength(std::string const &contentLength);
 
 		private:
 
@@ -39,6 +41,7 @@ namespace RESPONS
 			std::string _htmlFile;
 			std::string	_status;
 			std::string	_contentType;
+			std::string	_contentLength;
 			MAP_STRING	_info;
 	};
 }

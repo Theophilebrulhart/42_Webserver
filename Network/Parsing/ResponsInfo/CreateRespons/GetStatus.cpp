@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:04:53 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 21:30:08 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/08 13:05:55 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ RESPONS::GetStatus::GetStatus(MAP_STRING &info, std::string html) : _info(info),
 {
 	setStatus(info.at("PROTOCOL"));
 	if (!_html.empty())
-		setStatus(" 200 OK");
+		setStatus(" 200 OK\r\n");
 	else
-		setStatus(" 404 Not Found");
+		setStatus(" 404 Not Found\r\n");
     return ;
 }
 

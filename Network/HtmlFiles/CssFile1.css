@@ -1,3 +1,15 @@
-h1 {
-    color: blue;
+.Body{
+    flex-direction: column;
+}
+
+.Header{
+    background-color: aquamarine;
+}
+
+.Main {
+    background-color: red;
+}
+
+.Footer {
+    background-color: black;
 }
