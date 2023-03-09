@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:25:04 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 21:50:30 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/09 11:10:32 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ namespace RESPONS
 	class GetHtml
 	{
 		public:
-			GetHtml(MAP_STRING	&info);
+			GetHtml(MAP_STRING	&info, std::string const &file);
 			~GetHtml(void);
 
 			std::string	getHtml(void) const;

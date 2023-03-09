@@ -8,8 +8,8 @@ body {
 	width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 0.3fr 0.7fr 1fr;
-    grid-template-rows: 0.7fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1fr 0.2fr;
 }
 /* ----------HEADER -----------*/
 .header {
@@ -22,13 +22,13 @@ body {
 .logo {
 	width: 90px;
 	height:	90px;
-	border-radius: 20px;
+	border-radius: 100%;
 	margin-top: 1.6rem;
 	margin-left: 5rem;
 }
 
 .center1 {
-	grid-column: 2 / 4;
+	grid-column: 2 / 3;
 }
 
 .title {
@@ -40,7 +40,7 @@ body {
 }
 
 .right1{
-	grid-column: 4 / 5;
+	grid-column: 3 / 4;
 }
 
 /*-----------SIDE-------------*/
@@ -51,21 +51,31 @@ body {
 .image {
 	width: 100%;
 	height: 100%;
-	object-fit: fill;
+	filter: grayscale(100%);
+	object-fit: none;
 }
 
 /* --LEFT-- */
 .left {
-	grid-row: 2 / 6;
+	grid-row: 2 / 3;
 }
 /* --RIGHT-- */
 .right {
-	grid-column: 4 / 5;
-	grid-row: 2 / 6;
+	grid-column: 3 / 4;
+	grid-row: 2 / 3;
 }
 /* ----------CENTER----------- */
+
+.form{
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    background-color: #ac3722;
+}
+
 .center {
-    background-color: #34393d;
 	text-align: center;
 }
 
@@ -94,19 +104,20 @@ body {
 /* --1-- */
 .first {
 
-	grid-row: 2 / 3;
-	grid-column: 2 / 4;
+	background-color: #34393d;
+	grid-column: 1 / 3;
+    grid-row: 1 / 2;
 }
 /* --2-- */
 .second {
-
-	grid-row: 3 / 4;
-	grid-column: 2 / 4;
+	background-color: #34393d;
+	grid-column: 1 / 3;
+    grid-row: 2 / 3;
 }
 
 /* --3-- */
 .third {
-
+	background-color: #34393d;
 }
 
 .le
@@ -114,8 +125,8 @@ body {
 	display: flex;
 	justify-content: right;
 	align-items: center;
-	grid-row: 4 / 5;
-	grid-column: 2 / 3;
+	grid-column: 1 / 2;
+    grid-row: 3 / 4;
 }
 
 .profilPic {
@@ -130,8 +141,8 @@ body {
 }
 
 .ri {
-	grid-row: 4 / 5;
-	grid-column: 3 / 4;
+	grid-column: 2 / 3;
+    grid-row: 3 / 4;
 }
 
 
@@ -142,8 +153,9 @@ body {
 
 /* --4-- */
 .fourth {
-	grid-row: 5 / 6;
-	grid-column: 2 / 4;
+	background-color: #34393d;
+	grid-column: 1 / 3;
+    grid-row: 4 / 5;
 }
 
 .submit {
@@ -160,12 +172,13 @@ body {
 	padding-right: 2rem;
 	color: #bbbbbb;
 	text-decoration: none;
+    text-align: center;
 	font-family: 'Titillium Web', sans-serif;
 }
 
 /* -------------FOOTER----------- */
 .footer {
 	background-color: #171717;
-	grid-row: 6 / 7;
-	grid-column: 1 / 4;
+	grid-row: 3 / 4;
+	grid-column: 3 / 4;
 }

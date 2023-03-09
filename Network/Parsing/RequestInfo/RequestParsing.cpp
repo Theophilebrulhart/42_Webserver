@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:02:35 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 12:38:53 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:45:42 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    printInfo(MAP_STRING &info)
         std::cout << it_b->first << " : " << it_b->second << "\n"; 
         ++it_b;
     }
+    std::cout << "*****\e[0;35mREQUEST INFO PRINT END\e[0m******\n";
 }
 
 std::map<std::string, std::string>  &requestParsing(std::string buffer, MAP_STRING &info)

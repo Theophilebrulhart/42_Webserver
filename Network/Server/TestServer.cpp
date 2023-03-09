@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:57:16 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/08 13:04:20 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:00:09 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void    SERVER::TestServer::_accepter(void)
 void	SERVER::TestServer::_handler(void)
 {
 	requestParsing(_buffer, _requestInfo);
+	if (_requestInfo.at("METHOD") == "POST")
+	{
+		std::cout << "\nVa falloir change htmpProfil\n\n";
+	}
 	return ;
 }
 
