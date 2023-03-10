@@ -6,7 +6,7 @@
 #    By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/02 13:06:30 by tbrulhar          #+#    #+#              #
-#    Updated: 2023/03/07 20:30:46 by tbrulhar         ###   ########.fr        #
+#    Updated: 2023/03/10 13:24:21 by tbrulhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ ListenSocket.cpp}
 SRC +=	${addprefix Network/Server/, AServer.cpp TestServer.cpp}
 SRC +=	${addprefix Network/Parsing/RequestInfo/, RequestParsing.cpp GetInfo.cpp}
 SRC +=	${addprefix Network/Parsing/ResponsInfo/, ResponsInfo.cpp}
-SRC +=	${addprefix Network/Parsing/ResponsInfo/CreateRespons/, GetHtml.cpp GetStatus.cpp Utils.cpp}
+SRC +=	${addprefix Network/Parsing/ResponsInfo/CreateRespons/, GetResponsContent.cpp GetStatus.cpp Utils.cpp}
 OBJ = $(SRC:.cpp=.o) 
 GPP = c++ 
 RM = rm -f 

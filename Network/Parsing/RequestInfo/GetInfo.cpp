@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:34:27 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/09 17:00:32 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:21:19 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,13 @@ void	getSection(std::string &buffer, MAP_STRING &info, std::string toFind, std::
 		path += buffer[i];
 		i++;
 	}
+	if (name == "TYPE")
+	{
+		if (path.find("text") != std::string::npos)
+			path = "text";
+		if (path.find("image") != std::string::npos)
+			path = "image";
+	}
 	try 
 	{
     	info.at(name) = path;
@@ -107,7 +114,7 @@ void	insertValue(int i, int j, std::string &buffer, MAP_STRING &info, std::strin
 		//std::cout << "s\n";
 		tmp += buffer[i];
 	}
-	std::cout << "tmp to insert : " << tmp << "\n";
+	//std::cout << "tmp to insert : " << tmp << "\n";
 	try 
 	{
     	info.at(key) = tmp;
@@ -136,4 +143,5 @@ void	getInfo(std::string &buffer, MAP_STRING &info)
 	getSection(buffer, info, "Host:", "HOST");
 	getSection(buffer, info, "Connection:", "CONNECTION");
 	getSection(buffer, info, "Referer:", "REFERER");
+	getSection(buffer, info, "Accept", "TYPE");
 }

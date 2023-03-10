@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:37:34 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/09 11:29:37 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:57:53 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 RESPONS::ResponsInfo::ResponsInfo(MAP_STRING &info) : _info(info)
 {
-	if (_info.at("PATH").find(".html") != std::string::npos || _info.at("PATH").find(".css") != std::string::npos)
+	if (_info.at("TYPE").find("text") != std::string::npos || _info.at("TYPE").find("image") != std::string::npos)
 	{
-		getHtmlFile(_info.at("PATH"));
+		GetResponsContentFile(_info.at("PATH"));
 		setRespons(_status);
 		setRespons(_contentType);
 		// std::cout << "contentLength : " << _contentLength << "\n";
 		//setRespons(_contentLength);
 		setRespons("\r\n");
 	}
-
-	setRespons(_htmlFile);
+	std::cout << "Respons : " << _respons;
+	setRespons(_contentFile);
     return ;
 }
 
@@ -47,21 +47,21 @@ std::string RESPONS::ResponsInfo::getRespons(void) const
 	return (_respons);
 }
 
-void		RESPONS::ResponsInfo::getHtmlFile(std::string const &file)
+void		RESPONS::ResponsInfo::GetResponsContentFile(std::string const &file)
 {
-	std::cout << "\ngetHtml from responsinfo\n";
-	RESPONS::GetHtml htmlFile(_info, file);
-	RESPONS::GetStatus	status(_info, htmlFile.getHtml());
+	//std::cout << "\nGetResponsContent from responsinfo\n";
+	RESPONS::GetResponsContent htmlFile(_info, file);
+	RESPONS::GetStatus	status(_info, htmlFile.getContent());
 	setStatus(status.getStatus());
 	setContentType(htmlFile.getContentType());
-	setHtmlFile(htmlFile.getHtml());
+	setHtmlFile(htmlFile.getContent());
 	setContentLength(htmlFile.getContentLength());
 	return ;
 }
 
 void	RESPONS::ResponsInfo::setHtmlFile(std::string const &htmlFile)
 {
-	_htmlFile = htmlFile;
+	_contentFile = htmlFile;
 	return ;
 }
 

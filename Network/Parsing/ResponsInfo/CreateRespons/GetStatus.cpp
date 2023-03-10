@@ -6,19 +6,21 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:04:53 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/08 13:05:55 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:53:40 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "GetStatus.hpp"
 
-RESPONS::GetStatus::GetStatus(MAP_STRING &info, std::string html) : _info(info), _html(html)
+RESPONS::GetStatus::GetStatus(MAP_STRING &info, std::string content) : _info(info), _content(content)
 {
+	std::cout << "getstatus\n";
 	setStatus(info.at("PROTOCOL"));
-	if (!_html.empty())
+	if (!_content.empty())
 		setStatus(" 200 OK\r\n");
 	else
 		setStatus(" 404 Not Found\r\n");
+	std::cout << "status value : " << getStatus() << "\n";
     return ;
 }
 

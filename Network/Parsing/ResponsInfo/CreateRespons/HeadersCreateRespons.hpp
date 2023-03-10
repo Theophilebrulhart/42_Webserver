@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 20:24:03 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 20:25:25 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:25:40 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../ResponsInfo.hpp"
 # include "GetStatus.hpp"
-# include "GetHtml.hpp"
+# include "GetResponsContent.hpp"
 
 std::string	ft_itoa(int n);
 
