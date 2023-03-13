@@ -35,7 +35,7 @@ RESPONS::GetResponsContent::~GetResponsContent(void)
 void	getUserValue(std::string &tmp, MAP_STRING const &info)
 {
 	std::string imagePath = "Image/" + info.at("SPORT") + ".svg";
-	std::cout << "\nReplace Username Image path : " << imagePath << "\n\n";
+	//std::cout << "\nReplace Username Image path : " << imagePath << "\n\n";
 	try	{
 		tmp.replace(tmp.find("UserName"), 8, info.at("FIRSTNAME"));
 		tmp.replace(tmp.find("UserSport"), 9, imagePath);
@@ -50,7 +50,7 @@ void	getUserValue(std::string &tmp, MAP_STRING const &info)
 
 std::string	RESPONS::GetResponsContent::loadContentFile(std::string contentFile, MAP_STRING const &info)
 {	
-	std::cout << "\nhtml file : " << contentFile << "\n\n";
+	//std::cout << "\nhtml file : " << contentFile << "\n\n";
 	std::string file = "Network/HtmlFiles" + contentFile;
 	std::string	tmp;
 	std::ifstream ifs (file.c_str(), std::ifstream::in);
@@ -113,7 +113,7 @@ void		RESPONS::GetResponsContent::setContentType(MAP_STRING const &info, std::st
 	setExtension();
 	for (int i = file.find("."); file[i]; i++)
 		extension += file[i];
-	std::cout << "extension : " << extension << "\n";
+	//std::cout << "extension : " << extension << "\n";
 	try 
 	{
 		_contentType = _extension.at(extension);
@@ -122,5 +122,5 @@ void		RESPONS::GetResponsContent::setContentType(MAP_STRING const &info, std::st
 	{
 	}
 	
-	std::cout << "_contentTupe : " << _contentType << "\n";
+	//std::cout << "_contentTupe : " << _contentType << "\n";
 }

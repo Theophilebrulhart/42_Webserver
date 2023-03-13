@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:53:21 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/06 15:55:46 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:30:17 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include <map>
 # include <iostream>
+# include <unistd.h>
 # define MAP_STRING std::map<std::string, std::string> 
 
 //********MainParsing*******//
-std::map<std::string, std::string>  &requestParsing(std::string buffer, MAP_STRING &info);
-void    							printInfo(MAP_STRING &info);
+void    requestParsing(std::string buffer, MAP_STRING &info);
+void    printInfo(MAP_STRING &info);
+void    formParsing(std::string &buffer, MAP_STRING &info, int socket);
 
 //********GetInfo*******//
 

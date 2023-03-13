@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:34:27 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/10 14:21:19 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:06:36 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,31 +74,35 @@ void	getSection(std::string &buffer, MAP_STRING &info, std::string toFind, std::
 {
 	std::string path;
 	
-	int i = buffer.find(toFind.c_str(), 0, toFind.size());
+	if (buffer.find(toFind.c_str(), 0, toFind.size()) != std::string::npos)
+	{
+		int i = buffer.find(toFind.c_str(), 0, toFind.size());
+		
+		while (buffer[i] != ' ')
+			i++;
+		i++;
+		while (buffer[i] && buffer[i] != '\n')
+		{
+			path += buffer[i];
+			i++;
+		}
+		if (name == "TYPE")
+		{
+			if (path.find("text") != std::string::npos)
+				path = "text";
+			if (path.find("image") != std::string::npos)
+				path = "image";
+		}
+		try 
+		{
+			info.at(name) = path;
+		}
+		catch (const std::out_of_range& oor) 
+		{
+			info.insert(std::pair<std::string, std::string>(name, path));
+		}
+	}
 	
-	while (buffer[i] != ' ')
-		i++;
-	i++;
-	while (buffer[i] && buffer[i] != '\n')
-	{
-		path += buffer[i];
-		i++;
-	}
-	if (name == "TYPE")
-	{
-		if (path.find("text") != std::string::npos)
-			path = "text";
-		if (path.find("image") != std::string::npos)
-			path = "image";
-	}
-	try 
-	{
-    	info.at(name) = path;
-  	}
-  	catch (const std::out_of_range& oor) 
-	{
-		info.insert(std::pair<std::string, std::string>(name, path));
-  	}
 }
 
 void	insertValue(int i, int j, std::string &buffer, MAP_STRING &info, std::string key)
@@ -136,12 +140,12 @@ void	getFormValue(std::string &buffer, MAP_STRING &info)
 void	getInfo(std::string &buffer, MAP_STRING &info)
 {
 	getMethod(buffer, info);
-	if (info.at("METHOD") == "POST")
-		getFormValue(buffer, info);
+	// if (info.at("METHOD") == "POST")
+	// 	getFormValue(buffer, info);
     getPath(buffer, info, "/", "PATH");
     getPath(buffer, info, "HTTP/", "PROTOCOL");
 	getSection(buffer, info, "Host:", "HOST");
 	getSection(buffer, info, "Connection:", "CONNECTION");
-	getSection(buffer, info, "Referer:", "REFERER");
 	getSection(buffer, info, "Accept", "TYPE");
+	getSection(buffer, info, "Content-Type", "CONTENT-TYPE");
 }
