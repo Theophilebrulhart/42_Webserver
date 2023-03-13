@@ -98,11 +98,9 @@ void		RESPONS::GetResponsContent::setExtension(void)
 
 void		RESPONS::GetResponsContent::setSportImage(void)
 {
-	_extension.insert(std::pair<std::string, std::string>("Basket", "Image/Basket.svg"));
+		_extension.insert(std::pair<std::string, std::string>("Basket", "Image/Basket.svg"));
 		_extension.insert(std::pair<std::string, std::string>("Jogging", "Image/Course.svg"));
-
 		_extension.insert(std::pair<std::string, std::string>("Football", "Image/Football.svg"));
-
 		_extension.insert(std::pair<std::string, std::string>("Ski", "Image/Ski.svg"));
 
 	return ;
