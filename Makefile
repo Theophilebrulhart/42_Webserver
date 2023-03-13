@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+         #
+#    By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/02 13:06:30 by tbrulhar          #+#    #+#              #
-#    Updated: 2023/03/10 13:24:21 by tbrulhar         ###   ########.fr        #
+#    Updated: 2023/03/13 22:13:43 by theophilebr      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRC =	Source/main.cpp
 SRC +=	${addprefix Network/Socket/, ASocket.cpp BindSocket.cpp ConnectSocket.cpp \
 ListenSocket.cpp}
 SRC +=	${addprefix Network/Server/, AServer.cpp TestServer.cpp}
-SRC +=	${addprefix Network/Parsing/RequestInfo/, RequestParsing.cpp GetInfo.cpp}
+SRC +=	${addprefix Network/Parsing/RequestInfo/, RequestParsing.cpp GetInfo.cpp GetFormValue.cpp}
 SRC +=	${addprefix Network/Parsing/ResponsInfo/, ResponsInfo.cpp}
 SRC +=	${addprefix Network/Parsing/ResponsInfo/CreateRespons/, GetResponsContent.cpp GetStatus.cpp Utils.cpp}
 OBJ = $(SRC:.cpp=.o) 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RequestParsing.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:02:35 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/13 18:04:45 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:15:18 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,14 @@ void    formParsing(std::string &buffer, MAP_STRING &info, int socket)
         {
             bzero(buf, 1000);
             readTest = read(socket, buf, 1000);
-            content = buf; 
-            buffer += content;
+            content += buf;
             if (readTest != 1000)
                 break ;
         }
     }
-    std::cout << "###### bffer ########\n\n" << buffer << "\n";
+    std::cout << "###### contetn ########\n\n" << content << "\n";
+
+    getFormValue(content, info);
+    buffer += content;
+    // std::cout << "###### bffer ########\n\n" << buffer << "\n";
 }

@@ -39,6 +39,7 @@ void	getUserValue(std::string &tmp, MAP_STRING const &info)
 	try	{
 		tmp.replace(tmp.find("UserName"), 8, info.at("FIRSTNAME"));
 		tmp.replace(tmp.find("UserSport"), 9, imagePath);
+		tmp.replace(tmp.find("ProfilPic"), 9, info.at("PROFILPIC"));
 	}
 	catch (const std::out_of_range& oor) 
 	{

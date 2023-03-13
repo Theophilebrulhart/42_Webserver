@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HeadersRequestInfo.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:53:21 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/13 17:30:17 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:14:37 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@ void    formParsing(std::string &buffer, MAP_STRING &info, int socket);
 void	getInfo(std::string &buffer, MAP_STRING &info);
 void    getMethod(std::string &buffer, MAP_STRING &info);
 void	getSection(std::string &buffer, MAP_STRING &info, std::string toFind, std::string name);
+
+//********GetFormValue*******//
+
+void    getFormValue(std::string const &content, MAP_STRING &info);
 
 #endif

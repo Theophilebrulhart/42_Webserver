@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   TestServer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:57:16 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/13 18:02:05 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:59:02 by theophilebr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,18 @@ void    SERVER::TestServer::_accepter(void)
 void	SERVER::TestServer::_handler(void)
 {
 	requestParsing(_buffer, _requestInfo);
-	try
+	if (_requestInfo.at("METHOD") == "POST")
 	{
-		_requestInfo.at("CONTENT-TYPE");
-		formParsing (_buffer, _requestInfo, _newSocket);
+		try
+		{
+			_requestInfo.at("CONTENT-TYPE");
+			formParsing (_buffer, _requestInfo, _newSocket);
+		}
+		catch(const std::out_of_range& oor)
+		{
+			std::cout << "\nNo multipart/form-data\n";
+		}
 	}
-	catch(const std::out_of_range& oor)
-	{
-		std::cout << "\nNo multipart/form-data\n";
-	}
-	
 	return ;
 }
 
