@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:04:53 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/10 14:53:40 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:26:05 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ RESPONS::GetStatus::GetStatus(MAP_STRING &info, std::string content) : _info(inf
 		setStatus(" 200 OK\r\n");
 	else
 		setStatus(" 404 Not Found\r\n");
-	std::cout << "status value : " << getStatus() << "\n";
+	//std::cout << "status value : " << getStatus() << "\n";
     return ;
 }
 

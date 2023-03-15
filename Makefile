@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+         #
+#    By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/02 13:06:30 by tbrulhar          #+#    #+#              #
-#    Updated: 2023/03/13 22:13:43 by theophilebr      ###   ########.fr        #
+#    Updated: 2023/03/15 17:31:06 by tbrulhar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ SRC +=	${addprefix Network/Parsing/RequestInfo/, RequestParsing.cpp GetInfo.cpp 
 SRC +=	${addprefix Network/Parsing/ResponsInfo/, ResponsInfo.cpp}
 SRC +=	${addprefix Network/Parsing/ResponsInfo/CreateRespons/, GetResponsContent.cpp GetStatus.cpp Utils.cpp}
 OBJ = $(SRC:.cpp=.o) 
-GPP = c++ 
+GPP = c++
 RM = rm -f 
-GFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+GFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 NAME = webserv
 

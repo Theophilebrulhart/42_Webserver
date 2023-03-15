@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HeadersRequestInfo.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: theophilebrulhart <theophilebrulhart@st    +#+  +:+       +#+        */
+/*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 15:53:21 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/13 22:14:37 by theophilebr      ###   ########.fr       */
+/*   Updated: 2023/03/15 19:18:43 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <map>
 # include <iostream>
 # include <unistd.h>
+# include <vector>
+# include <sys/socket.h>
+# include <fstream>
 # define MAP_STRING std::map<std::string, std::string> 
 
 //********MainParsing*******//

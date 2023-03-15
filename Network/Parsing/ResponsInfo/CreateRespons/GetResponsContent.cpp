@@ -20,7 +20,7 @@ RESPONS::GetResponsContent::GetResponsContent(MAP_STRING &info, std::string cons
 		_contentType = "Content-Type not supported\r\n";
 		return ;
 	}
-	std::cout << "content type : " << _contentType << "\n";
+	//std::cout << "content type : " << _contentType << "\n";
 	_content = loadContentFile(file, info);
 	std::string size = ft_itoa(_content.size());
 	_contentLength = "Content-Length : " + size + "\r\n";
@@ -32,22 +32,21 @@ RESPONS::GetResponsContent::~GetResponsContent(void)
     return ;
 }
 
-void	getUserValue(std::string &tmp, MAP_STRING const &info)
-{
-	std::string imagePath = "Image/" + info.at("SPORT") + ".svg";
-	//std::cout << "\nReplace Username Image path : " << imagePath << "\n\n";
-	try	{
-		tmp.replace(tmp.find("UserName"), 8, info.at("FIRSTNAME"));
-		tmp.replace(tmp.find("UserSport"), 9, imagePath);
-		tmp.replace(tmp.find("ProfilPic"), 9, info.at("PROFILPIC"));
-	}
-	catch (const std::out_of_range& oor) 
-	{
+// void	getUserValue(std::string &tmp, MAP_STRING const &info)
+// {
+// 	std::string imagePath = "Image/" + info.at("SPORT") + ".svg";
+// 	//std::cout << "\nReplace Username Image path : " << imagePath << "\n\n";
+// 	try	{
+// 		tmp.replace(tmp.find("UserName"), 8, info.at("FIRSTNAME"));
+// 		tmp.replace(tmp.find("UserSport"), 9, imagePath);
+// 		tmp.replace(tmp.find("ProfilPic"), 9, info.at("PROFILPIC"));
+// 	}
+// 	catch (const std::out_of_range& oor) 
+// 	{
 		
-  	}
-	
-	return ;
-}
+//   	}
+// 	return ;
+// }
 
 std::string	RESPONS::GetResponsContent::loadContentFile(std::string contentFile, MAP_STRING const &info)
 {	
@@ -57,7 +56,7 @@ std::string	RESPONS::GetResponsContent::loadContentFile(std::string contentFile,
 	std::ifstream ifs (file.c_str(), std::ifstream::in);
 	if(ifs.fail())
 	{
-		std::cout << "\nopen html file failed \n\n";
+		std::cout << "\nopen file failed \n\n";
 		return (tmp);
 	}
 	char	c = ifs.get();
@@ -67,8 +66,8 @@ std::string	RESPONS::GetResponsContent::loadContentFile(std::string contentFile,
 		c = ifs.get(); 
 	}
 	ifs.close();
-	if (contentFile == "/Profil.html")
-		getUserValue(tmp, info);
+	// if (contentFile == "/Profil.html")
+	// 	getUserValue(tmp, info);
 	//std::cout << "end of load contentfile with tmp : " << tmp << "\n";
 	return (tmp);
 }
@@ -97,15 +96,15 @@ void		RESPONS::GetResponsContent::setExtension(void)
 	return ;
 }
 
-void		RESPONS::GetResponsContent::setSportImage(void)
-{
-		_extension.insert(std::pair<std::string, std::string>("Basket", "Image/Basket.svg"));
-		_extension.insert(std::pair<std::string, std::string>("Jogging", "Image/Course.svg"));
-		_extension.insert(std::pair<std::string, std::string>("Football", "Image/Football.svg"));
-		_extension.insert(std::pair<std::string, std::string>("Ski", "Image/Ski.svg"));
+// void		RESPONS::GetResponsContent::setSportImage(void)
+// {
+// 		_extension.insert(std::pair<std::string, std::string>("Basket", "Image/Basket.svg"));
+// 		_extension.insert(std::pair<std::string, std::string>("Jogging", "Image/Course.svg"));
+// 		_extension.insert(std::pair<std::string, std::string>("Football", "Image/Football.svg"));
+// 		_extension.insert(std::pair<std::string, std::string>("Ski", "Image/Ski.svg"));
 
-	return ;
-}
+// 	return ;
+// }
 
 void		RESPONS::GetResponsContent::setContentType(MAP_STRING const &info, std::string const &file)
 {
