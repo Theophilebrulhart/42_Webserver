@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:54:43 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/07 15:06:58 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:17:11 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <iostream> 
 # include "AServer.hpp"
 # include <unistd.h>
+# include <vector>
 # include "../Parsing/HeadersParsing.hpp"
 
 namespace   SERVER
@@ -30,7 +31,7 @@ namespace   SERVER
 
         private:
 
-            char			_buffer[3000];
+            std::string			_buffer;
             int				_newSocket;
             void			_accepter(void);
             void  			_handler(void);

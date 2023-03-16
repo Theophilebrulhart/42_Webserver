@@ -103,14 +103,22 @@ body {
 }
 
 .profilPic {
-	width: 4rem;
-	height: 4rem;
+	
+	display: flex;
+	/* /* justify-content: center; */
+	align-items: center;
+}
+
+.size {
+	width: 5rem;
+	height: 5rem;
 	background-color: #bbbbbb;
 	padding: 1rem;
 	border-radius: 100%;
 	border-style: solid;
 	border-width: 0.2rem;
 	border-color: #ac3722;
+
 }
 
 /* --2-- */

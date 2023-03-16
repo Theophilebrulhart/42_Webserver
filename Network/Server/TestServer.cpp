@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:57:16 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/13 14:30:36 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:57:22 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void    SERVER::TestServer::_accepter(void)
 {
     struct  sockaddr_in address = getServerSocket()->getAddress();
     int     addrlen = sizeof(address);
+	std::vector<char>	buf(1000);
+
     _newSocket = accept(getServerSocket()->getSocketFd(), (struct sockaddr *)&address,
                         (socklen_t *)&addrlen);
 	if (_newSocket < 0)
@@ -35,25 +37,43 @@ void    SERVER::TestServer::_accepter(void)
 		std::cerr << "Failed to accept socket\n";
 		exit (EXIT_FAILURE);
 	}
-    read(_newSocket, _buffer, 3000);
+		bzero(buf.data(), buf.size());
+    	if (recv(_newSocket, buf.data(), buf.size(), 0) < 0)
+		{
+			std::cerr << "Failed recv\n";
+			exit (EXIT_FAILURE);
+		}
+	std::string str(buf.begin(), buf.end());
+	_buffer = str;
+	//std::cout << _buffer << std::endl;
+	std::cout << "\naccepter end\n\n";
 	return ;
 }
 
 void	SERVER::TestServer::_handler(void)
 {
+	//std::cout << "\ntests\n";
 	requestParsing(_buffer, _requestInfo);
 	if (_requestInfo.at("METHOD") == "POST")
 	{
-		std::cout << "\nVa falloir change htmpProfil\n\n";
+		try
+		{
+			_requestInfo.at("CONTENT-TYPE");
+			formParsing (_buffer, _requestInfo, _newSocket);
+		}
+		catch(const std::out_of_range& oor)
+		{
+			std::cout << "\nNo multipart/form-data\n";
+		}
 	}
 	return ;
 }
 
 void	SERVER::TestServer::_responder(void)
 {
-	RESPONS::ResponsInfo	createRespons(_requestInfo);	
+	RESPONS::ResponsInfo	createRespons(_requestInfo);
 	std::string respons = createRespons.getRespons();
-	std::cout << "\n\e[0;93m*****RESPONDER****\n" << respons;
+	//std::cout << "\n\e[0;93m*****RESPONDER****\n" << respons;
 	send(_newSocket, respons.c_str(), respons.size(), 0);
 	//std::cout << "send done\n";
 	close(_newSocket);
@@ -67,6 +87,7 @@ void	SERVER::TestServer::launch(void)
 	{
 		std::cout << "\n\e[0;32m===== WAITING =====\e[0m\n";
 		_accepter();
+		std::cout << "\ntests1\n";
 		_handler();
 		_responder();
 		std::cout << "\e[0;36m\n===== DONE =====\e[0m\n";

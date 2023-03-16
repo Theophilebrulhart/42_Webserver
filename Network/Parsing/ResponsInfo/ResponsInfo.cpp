@@ -6,7 +6,7 @@
 /*   By: tbrulhar <tbrulhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:37:34 by tbrulhar          #+#    #+#             */
-/*   Updated: 2023/03/10 15:57:53 by tbrulhar         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:04:34 by tbrulhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ RESPONS::ResponsInfo::ResponsInfo(MAP_STRING &info) : _info(info)
 		//setRespons(_contentLength);
 		setRespons("\r\n");
 	}
-	std::cout << "Respons : " << _respons;
+	//std::cout << "Respons : " << _respons;
 	setRespons(_contentFile);
     return ;
 }
